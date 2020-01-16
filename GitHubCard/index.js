@@ -3,6 +3,20 @@
            https://api.github.com/users/<your name>
 */
 
+
+axios.get('https://api.github.com/users/marvinlewis')
+.then(res => {
+          
+          
+          console.log(res);
+          let cards = document.querySelector('.cards');
+          console.log(res.data.followers_url)
+          cards.append(createGit(res.data))
+          })
+.catch(error => {
+  console.log('error bro')
+});
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -12,7 +26,61 @@
 
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
+
+           
 */
+
+
+function createGit (gitPage) {
+
+  let mainCard = document.createElement('div'),
+  img = document.createElement('img'),
+  imgDiv = document.createElement('div'),
+  paraDiv = document.createElement('div'),
+  name = document.createElement('h3'),
+  para = document.createElement('p'),
+  profile = document.createElement('a'),
+  bio = document.createElement('p'),
+  followers = document.createElement('p'), 
+  userName = document.createElement('p'),
+  br = document.createElement('br');
+
+  img.src = gitPage.avatar_url;
+  name.textContent = 'Marvin Lewis';
+  para.textContent = `
+  Location : ${gitPage.location}`;
+  profile.textContent = gitPage.url;
+  followers.textContent = `
+  Followers :${gitPage.followers}`;
+  bio.textContent = `
+  Bio : ${gitPage.bio}`;
+  userName.textContent = `${gitPage.login}`;
+  profile.setAttribute('href', `${gitPage.url}` )
+
+  mainCard.classList.add('card');
+  img.classList.add('card-img',);
+  name.classList.add('card-name',);
+  paraDiv.classList.add('p');
+  userName.classList.add('card-username');
+  profile.classList.add('p');
+
+  mainCard.append(imgDiv);
+  imgDiv.append(img);
+  paraDiv.append(name);
+  paraDiv.append(userName);
+  mainCard.append(paraDiv);
+  paraDiv.append(para);
+  paraDiv.append(profile);
+  paraDiv.append(br);
+  paraDiv.append(followers);
+  paraDiv.append(bio);
+  
+  return mainCard;
+
+};
+
+
+
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
@@ -24,7 +92,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+//const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:

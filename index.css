@@ -101,27 +101,37 @@ body {
   margin-bottom: 30px;
 }
 
-.card img {
+.card-img {
   width: 150px;
   height: 150px;
   border-radius: 3px;
   margin-right: 20px;
 }
 
-.card .name {
+.card-name {
   font-size: 3.4rem;
 }
 
 .card p {
   font-size: 1.4rem;
   margin-bottom: 3px;
+  text-decoration: none;
 }
 
-.card .username {
+.card-username {
   font-size: 1.8rem;
   font-style: italic;
   margin: 3px 0 10px;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+  margin-bottom: 100px;
+  font-size : 1.5rem;
+}
+
+
 
 
 

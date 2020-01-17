@@ -4,15 +4,14 @@
 */
 
 
-axios.get('https://api.github.com/users/marvinlewis')
+axios.get('https://api.github.com/users/marvinlewis/followers')
 .then(res => {
-          
-          
-          console.log(res);
           let cards = document.querySelector('.cards');
-          console.log(res.data.followers_url)
-          cards.append(createGit(res.data))
-          })
+          let res1 = res.data;
+          console.log(res1);
+          res1.forEach(item => {
+          cards.append(createGit(item))
+          })})
 .catch(error => {
   console.log('error bro')
 });
@@ -46,16 +45,16 @@ function createGit (gitPage) {
   br = document.createElement('br');
 
   img.src = gitPage.avatar_url;
-  name.textContent = 'Marvin Lewis';
+  name.textContent = `Name`;
   para.textContent = `
   Location : ${gitPage.location}`;
-  profile.textContent = gitPage.url;
+  profile.textContent = gitPage.html_url;
   followers.textContent = `
   Followers :${gitPage.followers}`;
   bio.textContent = `
   Bio : ${gitPage.bio}`;
   userName.textContent = `${gitPage.login}`;
-  profile.setAttribute('href', `${gitPage.url}` )
+  profile.setAttribute('href', `${gitPage.html_url}` )
 
   mainCard.classList.add('card');
   img.classList.add('card-img',);
@@ -92,7 +91,6 @@ function createGit (gitPage) {
           user, and adding that card to the DOM.
 */
 
-//const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:

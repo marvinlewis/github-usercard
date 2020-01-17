@@ -131,7 +131,20 @@ a {
   font-size : 1.5rem;
 }
 
+.card-toggle {
+  background-color: #000;
+  color: white;
+}
 
+.container-toggle {
+  width: 100%;
 
+}
+
+.container1 {
+  max-width: 100%;
+  width: 100%;
+
+}
 
 

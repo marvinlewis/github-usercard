@@ -8,9 +8,10 @@ axios.get('https://api.github.com/users/marvinlewis/followers')
 .then(res => {
           let cards = document.querySelector('.cards');
           let res1 = res.data;
-          console.log(res1);
+          //console.log(res1);
           res1.forEach(item => {
-          cards.append(createGit(item))
+          cards.append(createGit(item));
+          //console.log(item)
           })})
 .catch(error => {
   console.log('error bro')
@@ -73,6 +74,25 @@ function createGit (gitPage) {
   paraDiv.append(br);
   paraDiv.append(followers);
   paraDiv.append(bio);
+
+
+  mainCard.addEventListener('click', item => {
+    mainCard.classList.toggle('card-toggle');
+    profile.classList.toggle('card-toggle');
+
+    return img
+  })
+
+  img.addEventListener('click', event => {
+    let back = document.querySelector('.cards');
+
+   // back.classList.toggle('container-toggle');
+    //back.classList.toggle('container-toggle');
+
+    let cont = document.querySelector('.container');
+    cont.classList.toggle('container1');
+
+  })
   
   return mainCard;
 
